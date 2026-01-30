@@ -4,7 +4,7 @@
 
 A finance tracking app I built to help manage my money better. Full stack MERN (MongoDB, Express, React, Node.js).
 
-**Visit the deployed website link:https://personal-finance-tracker-q5j8cftqf-aymans-projects-a6fa1d14.vercel.app/login**
+**Visit the deployed website link:https://personal-finance-tracker-azure-two.vercel.app/login**
 
 if you dont want to create an account, use my test account.
 Email:test2@1234.com
