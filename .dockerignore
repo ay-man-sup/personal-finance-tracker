@@ -1,0 +1,31 @@
+# Ignore everything
+*
+
+# Allow server files
+!/server/**
+!server/
+
+# Allow client source files
+!/client/**
+!client/
+
+# Ignore node_modules everywhere
+**/node_modules
+
+# Ignore build artifacts
+**/build
+**/dist
+**/coverage
+
+# Ignore environment files
+**/.env
+**/.env.*
+
+# Ignore logs
+**/*.log
+
+# Allow specific config files
+!/docker-compose.yml
+!/package.json
+!/.dockerignore
+!/README.md
