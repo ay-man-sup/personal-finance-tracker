@@ -21,7 +21,7 @@ A finance tracking app I built to help manage my money better. Full stack MERN (
 **Frontend:** React, Tailwind CSS, Recharts  
 **Auth:** JWT tokens, bcrypt for passwords  
 
-Security is solid - rate limiting, helmet headers, input validation, the works.
+Security is solid-rate limiting, helmet headers, input validation, the works.
 
 
 ## Getting started
@@ -51,7 +51,7 @@ cd server && npm run dev
 cd client && npm start
 ```
 
-Backend runs on `localhost:5000`, frontend on `localhost:3000`.
+Backend runs on `localhost:5000`, frontend on `localhost:3000`. Make sure ports are unused and kill any processes if necessary. When using macOS make sure that airplay if off because this uses port 5000 by default.
 
 
 ## Environment variables
@@ -103,4 +103,4 @@ docker-compose up
 
 ---
 
-Built by Ayman Jalil
+Built by Ayman Jalil. If you save even a dollar using this, keep me in your thoughts and prayers.
