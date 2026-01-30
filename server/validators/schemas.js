@@ -1,25 +1,7 @@
-/**
- * Joi Validation Schemas
- * 
- * Defines validation schemas for all API endpoints.
- * Uses Joi for robust input validation and sanitization.
- */
-
 const Joi = require('joi');
 
-/**
- * Password validation requirements:
- * - Minimum 8 characters
- * - At least one uppercase letter
- * - At least one lowercase letter
- * - At least one number
- * - At least one special character
- */
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-/**
- * User Registration Schema
- */
 const registerSchema = Joi.object({
   name: Joi.string()
     .trim()
@@ -59,9 +41,6 @@ const registerSchema = Joi.object({
     .default('USD'),
 });
 
-/**
- * User Login Schema
- */
 const loginSchema = Joi.object({
   email: Joi.string()
     .trim()
@@ -80,9 +59,6 @@ const loginSchema = Joi.object({
     }),
 });
 
-/**
- * Transaction Schema
- */
 const transactionSchema = Joi.object({
   type: Joi.string()
     .valid('income', 'expense')
@@ -147,9 +123,6 @@ const transactionSchema = Joi.object({
   }),
 });
 
-/**
- * Transaction Update Schema (allows partial updates)
- */
 const transactionUpdateSchema = Joi.object({
   type: Joi.string()
     .valid('income', 'expense'),
@@ -184,9 +157,6 @@ const transactionUpdateSchema = Joi.object({
   'object.min': 'At least one field must be provided for update',
 });
 
-/**
- * Budget Schema
- */
 const budgetSchema = Joi.object({
   category: Joi.string()
     .trim()

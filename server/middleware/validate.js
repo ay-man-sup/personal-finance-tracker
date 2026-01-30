@@ -1,26 +1,10 @@
-/**
- * Validation Middleware
- * 
- * Uses Joi schemas to validate request data.
- * Provides clean error messages for invalid input.
- */
-
 const { ApiError } = require('./errorHandler');
 
-/**
- * Validate request body against a Joi schema
- * 
- * @param {Object} schema - Joi validation schema
- * @returns {Function} Express middleware function
- * 
- * @example
- * router.post('/users', validate(userSchema), createUser);
- */
 const validate = (schema) => {
   return (req, res, next) => {
     const { error, value } = schema.validate(req.body, {
-      abortEarly: false, // Return all errors, not just the first
-      stripUnknown: true, // Remove unknown fields
+      abortEarly: false,
+      stripUnknown: true,
     });
 
     if (error) {
@@ -34,12 +18,6 @@ const validate = (schema) => {
   };
 };
 
-/**
- * Validate request query parameters against a Joi schema
- * 
- * @param {Object} schema - Joi validation schema
- * @returns {Function} Express middleware function
- */
 const validateQuery = (schema) => {
   return (req, res, next) => {
     const { error, value } = schema.validate(req.query, {
@@ -57,12 +35,6 @@ const validateQuery = (schema) => {
   };
 };
 
-/**
- * Validate request URL parameters against a Joi schema
- * 
- * @param {Object} schema - Joi validation schema
- * @returns {Function} Express middleware function
- */
 const validateParams = (schema) => {
   return (req, res, next) => {
     const { error, value } = schema.validate(req.params, {
@@ -80,12 +52,6 @@ const validateParams = (schema) => {
   };
 };
 
-/**
- * Sanitize user input to prevent XSS attacks
- * 
- * @param {string} input - User input string
- * @returns {string} Sanitized string
- */
 const sanitizeInput = (input) => {
   if (typeof input !== 'string') return input;
   
@@ -97,13 +63,6 @@ const sanitizeInput = (input) => {
     .replace(/\//g, '&#x2F;');
 };
 
-/**
- * Middleware to sanitize all string fields in request body
- * 
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @param {Function} next - Express next function
- */
 const sanitizeBody = (req, res, next) => {
   if (req.body && typeof req.body === 'object') {
     Object.keys(req.body).forEach((key) => {

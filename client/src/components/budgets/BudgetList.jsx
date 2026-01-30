@@ -1,24 +1,9 @@
-/**
- * BudgetList Component
- * 
- * Displays all budgets with progress bars and status.
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FiEdit2, FiTrash2, FiAlertTriangle, FiPieChart } from 'react-icons/fi';
 import { formatCurrency } from '../../utils/helpers';
 import Loader from '../common/Loader';
 
-/**
- * BudgetList Component
- * 
- * @param {Object} props - Component props
- * @param {Array} props.budgets - List of budgets with spending data
- * @param {boolean} props.loading - Loading state
- * @param {Function} props.onEdit - Edit handler
- * @param {Function} props.onDelete - Delete handler
- */
 const BudgetList = ({
   budgets = [],
   loading = false,
@@ -51,9 +36,6 @@ const BudgetList = ({
     );
   }
 
-  /**
-   * Get progress bar color based on percentage
-   */
   const getProgressColor = (percent, isExceeded) => {
     if (isExceeded) return 'bg-gradient-to-r from-danger-500 to-danger-400';
     if (percent >= 80) return 'bg-gradient-to-r from-warning-500 to-warning-400';
@@ -72,7 +54,6 @@ const BudgetList = ({
             className="p-4 bg-gray-50 dark:bg-space-700/50 border border-gray-200 dark:border-accent-500/20 rounded-xl group hover:border-accent-500/40 transition-all duration-300"
           >
             <div className="flex items-start justify-between mb-3">
-              {/* Category and Status */}
               <div className="flex items-center space-x-2">
                 <div
                   className="w-3 h-3 rounded-full shadow-lg"
@@ -95,7 +76,6 @@ const BudgetList = ({
                 )}
               </div>
 
-              {/* Actions */}
               <div className="flex items-center space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">
                 <button
                   onClick={() => onEdit(budget)}
@@ -114,7 +94,6 @@ const BudgetList = ({
               </div>
             </div>
 
-            {/* Progress Bar */}
             <div className="mb-2">
               <div className="h-3 bg-gray-200 dark:bg-space-600 rounded-full overflow-hidden">
                 <div
@@ -124,7 +103,6 @@ const BudgetList = ({
               </div>
             </div>
 
-            {/* Amount Info */}
             <div className="flex items-center justify-between text-sm">
               <span className="text-gray-600 dark:text-gray-400">
                 {formatCurrency(budget.spent)} spent
@@ -134,7 +112,6 @@ const BudgetList = ({
               </span>
             </div>
 
-            {/* Remaining */}
             <div className="mt-1 text-xs">
               {budget.isExceeded ? (
                 <span className="text-danger-600 dark:text-danger-400">

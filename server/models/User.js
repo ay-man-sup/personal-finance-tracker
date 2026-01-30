@@ -1,20 +1,9 @@
-/**
- * User Model
- * 
- * Defines the schema for user accounts with secure password handling.
- * Includes methods for password comparison and JWT token generation.
- */
-
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-/**
- * User Schema Definition
- */
 const userSchema = new mongoose.Schema(
   {
-    // User's display name
     name: {
       type: String,
       required: [true, 'Please provide a name'],
@@ -23,7 +12,6 @@ const userSchema = new mongoose.Schema(
       maxlength: [50, 'Name cannot exceed 50 characters'],
     },
 
-    // Email address - used for login
     email: {
       type: String,
       required: [true, 'Please provide an email'],
@@ -36,22 +24,19 @@ const userSchema = new mongoose.Schema(
       ],
     },
 
-    // Hashed password - never stored in plain text
     password: {
       type: String,
       required: [true, 'Please provide a password'],
       minlength: [8, 'Password must be at least 8 characters'],
-      select: false, // Don't return password by default in queries
+      select: false,
     },
 
-    // User's preferred currency (default: USD)
     currency: {
       type: String,
       default: 'USD',
       enum: ['USD', 'EUR', 'GBP', 'CAD', 'AUD', 'INR', 'JPY'],
     },
 
-    // Account creation timestamp
     createdAt: {
       type: Date,
       default: Date.now,

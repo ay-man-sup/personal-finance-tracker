@@ -1,9 +1,3 @@
-/**
- * ExpensePieChart Component
- * 
- * Displays expenses by category in a pie chart.
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -16,9 +10,6 @@ import {
 } from 'recharts';
 import { formatCurrency, getCategoryColor } from '../../utils/helpers';
 
-/**
- * Custom tooltip for pie chart
- */
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     const data = payload[0].payload;
@@ -39,9 +30,6 @@ const CustomTooltip = ({ active, payload }) => {
   return null;
 };
 
-/**
- * Custom legend renderer
- */
 const renderLegend = (props) => {
   const { payload } = props;
   
@@ -63,12 +51,6 @@ const renderLegend = (props) => {
   );
 };
 
-/**
- * ExpensePieChart Component
- * 
- * @param {Object} props - Component props
- * @param {Array} props.data - Expense data by category
- */
 const ExpensePieChart = ({ data = [] }) => {
   // Calculate total for percentages
   const total = data.reduce((sum, item) => sum + item.total, 0);

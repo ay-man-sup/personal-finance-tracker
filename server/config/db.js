@@ -1,27 +1,11 @@
-/**
- * Database Configuration
- * 
- * This module handles MongoDB connection using Mongoose.
- * It includes connection retry logic and event handlers for
- * monitoring connection status.
- */
-
 const mongoose = require('mongoose');
 
-/**
- * Connect to MongoDB Atlas
- * 
- * @returns {Promise<void>}
- */
 const connectDB = async () => {
   try {
-    // Mongoose connection options for optimal performance and reliability
     const options = {
-      // Use the new URL parser
-      // These are now default in Mongoose 6+, but explicitly set for clarity
-      maxPoolSize: 10, // Maintain up to 10 socket connections
-      serverSelectionTimeoutMS: 5000, // Timeout after 5s if server not found
-      socketTimeoutMS: 45000, // Close sockets after 45s of inactivity
+      maxPoolSize: 10,
+      serverSelectionTimeoutMS: 5000,
+      socketTimeoutMS: 45000,
     };
 
     const conn = await mongoose.connect(process.env.MONGODB_URI, options);

@@ -1,9 +1,3 @@
-/**
- * Middleware Index
- * 
- * Exports all middleware for easy importing.
- */
-
 const { protect, optionalAuth } = require('./auth');
 const { ApiError, errorHandler, asyncHandler, notFound } = require('./errorHandler');
 const { apiLimiter, authLimiter, strictLimiter, createLimiter } = require('./rateLimiter');

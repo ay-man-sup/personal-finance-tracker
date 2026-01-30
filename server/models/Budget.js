@@ -1,18 +1,7 @@
-/**
- * Budget Model
- * 
- * Defines the schema for category-based budgets.
- * Supports monthly budget limits with tracking period.
- */
-
 const mongoose = require('mongoose');
 
-/**
- * Budget Schema Definition
- */
 const budgetSchema = new mongoose.Schema(
   {
-    // Reference to the user who owns this budget
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
@@ -20,14 +9,12 @@ const budgetSchema = new mongoose.Schema(
       index: true,
     },
 
-    // Category this budget applies to
     category: {
       type: String,
       required: [true, 'Please provide a category'],
       trim: true,
     },
 
-    // Budget limit amount
     limit: {
       type: Number,
       required: [true, 'Please provide a budget limit'],
@@ -35,15 +22,12 @@ const budgetSchema = new mongoose.Schema(
       max: [999999999.99, 'Budget limit exceeds maximum'],
     },
 
-    // Budget period (monthly, weekly, yearly)
     period: {
       type: String,
       enum: ['weekly', 'monthly', 'yearly'],
       default: 'monthly',
     },
 
-    // Alert threshold percentage (0-100)
-    // User gets warned when spending reaches this % of budget
     alertThreshold: {
       type: Number,
       default: 80,
@@ -51,7 +35,6 @@ const budgetSchema = new mongoose.Schema(
       max: [100, 'Alert threshold cannot exceed 100'],
     },
 
-    // Whether budget alerts are enabled
     alertsEnabled: {
       type: Boolean,
       default: true,

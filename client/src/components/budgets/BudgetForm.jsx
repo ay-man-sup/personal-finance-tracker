@@ -1,17 +1,8 @@
-/**
- * BudgetForm Component
- * 
- * Form for creating and editing budgets.
- */
-
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FiSave, FiX } from 'react-icons/fi';
 import { EXPENSE_CATEGORIES } from '../../utils/helpers';
 
-/**
- * Initial form state
- */
 const initialFormState = {
   category: '',
   limit: '',
@@ -22,24 +13,11 @@ const initialFormState = {
   notes: '',
 };
 
-/**
- * Color options for budgets
- */
 const colorOptions = [
   '#3B82F6', '#EF4444', '#10B981', '#F59E0B', '#8B5CF6',
   '#EC4899', '#06B6D4', '#84CC16', '#F97316', '#6366F1',
 ];
 
-/**
- * BudgetForm Component
- * 
- * @param {Object} props - Component props
- * @param {Object} props.budget - Budget to edit (null for new)
- * @param {Function} props.onSubmit - Submit handler
- * @param {Function} props.onCancel - Cancel handler
- * @param {boolean} props.loading - Loading state
- * @param {Array} props.existingCategories - Categories that already have budgets
- */
 const BudgetForm = ({
   budget = null,
   onSubmit,
@@ -68,16 +46,10 @@ const BudgetForm = ({
     setErrors({});
   }, [budget]);
 
-  /**
-   * Get available categories (filter out existing ones when creating)
-   */
   const availableCategories = budget
     ? EXPENSE_CATEGORIES
     : EXPENSE_CATEGORIES.filter((cat) => !existingCategories.includes(cat));
 
-  /**
-   * Handle input change
-   */
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     
@@ -86,15 +58,11 @@ const BudgetForm = ({
       [name]: type === 'checkbox' ? checked : value,
     }));
 
-    // Clear error when field is edited
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: '' }));
     }
   };
 
-  /**
-   * Validate form
-   */
   const validate = () => {
     const newErrors = {};
 
@@ -110,9 +78,6 @@ const BudgetForm = ({
     return Object.keys(newErrors).length === 0;
   };
 
-  /**
-   * Handle form submit
-   */
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -131,7 +96,6 @@ const BudgetForm = ({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      {/* Category */}
       <div>
         <label htmlFor="category" className="label">
           Category

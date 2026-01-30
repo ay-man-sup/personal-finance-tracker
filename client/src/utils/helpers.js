@@ -65,48 +65,21 @@ export const getRelativeTime = (date) => {
   return rtf.format(-Math.floor(diffInSeconds / 31536000), 'year');
 };
 
-/**
- * Calculate percentage
- * 
- * @param {number} value - Current value
- * @param {number} total - Total value
- * @returns {number} Percentage (0-100)
- */
 export const calculatePercentage = (value, total) => {
   if (total === 0) return 0;
   return Math.round((value / total) * 100);
 };
 
-/**
- * Truncate text with ellipsis
- * 
- * @param {string} text - Text to truncate
- * @param {number} maxLength - Maximum length
- * @returns {string} Truncated text
- */
 export const truncateText = (text, maxLength = 50) => {
   if (!text || text.length <= maxLength) return text;
   return text.substring(0, maxLength) + '...';
 };
 
-/**
- * Capitalize first letter of string
- * 
- * @param {string} str - String to capitalize
- * @returns {string} Capitalized string
- */
 export const capitalize = (str) => {
   if (!str) return '';
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
-/**
- * Debounce function
- * 
- * @param {Function} func - Function to debounce
- * @param {number} wait - Wait time in milliseconds
- * @returns {Function} Debounced function
- */
 export const debounce = (func, wait = 300) => {
   let timeout;
   return (...args) => {
@@ -115,12 +88,7 @@ export const debounce = (func, wait = 300) => {
   };
 };
 
-/**
- * Generate color for category
- * 
- * @param {string} category - Category name
- * @returns {string} Color hex code
- */
+
 export const getCategoryColor = (category) => {
   const colors = {
     // Income categories
@@ -154,12 +122,6 @@ export const getCategoryColor = (category) => {
   return colors[category] || '#6B7280';
 };
 
-/**
- * Get month name from number
- * 
- * @param {number} month - Month number (1-12)
- * @returns {string} Month name
- */
 export const getMonthName = (month) => {
   const months = [
     'January', 'February', 'March', 'April', 'May', 'June',
@@ -168,12 +130,6 @@ export const getMonthName = (month) => {
   return months[month - 1] || '';
 };
 
-/**
- * Get short month name
- * 
- * @param {number} month - Month number (1-12)
- * @returns {string} Short month name
- */
 export const getShortMonthName = (month) => {
   const months = [
     'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -182,23 +138,11 @@ export const getShortMonthName = (month) => {
   return months[month - 1] || '';
 };
 
-/**
- * Validate email format
- * 
- * @param {string} email - Email to validate
- * @returns {boolean} Is valid email
- */
 export const isValidEmail = (email) => {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return regex.test(email);
 };
 
-/**
- * Validate password strength
- * 
- * @param {string} password - Password to validate
- * @returns {Object} Validation result with score and feedback
- */
 export const validatePassword = (password) => {
   const result = {
     isValid: false,
@@ -240,9 +184,6 @@ export const validatePassword = (password) => {
   return result;
 };
 
-/**
- * Transaction categories
- */
 export const INCOME_CATEGORIES = [
   'Salary',
   'Freelance',
@@ -273,9 +214,6 @@ export const EXPENSE_CATEGORIES = [
   'Other Expenses',
 ];
 
-/**
- * Currency options
- */
 export const CURRENCIES = [
   { code: 'USD', symbol: '$', name: 'US Dollar' },
   { code: 'EUR', symbol: '€', name: 'Euro' },

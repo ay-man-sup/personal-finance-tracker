@@ -1,21 +1,8 @@
-/**
- * BudgetAlert Component
- * 
- * Displays budget alerts and warnings.
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FiAlertTriangle, FiAlertCircle, FiX } from 'react-icons/fi';
 import { formatCurrency } from '../../utils/helpers';
 
-/**
- * BudgetAlert Component
- * 
- * @param {Object} props - Component props
- * @param {Array} props.alerts - List of budget alerts
- * @param {Function} props.onDismiss - Dismiss handler
- */
 const BudgetAlert = ({ alerts = [], onDismiss }) => {
   if (!alerts.length) return null;
 

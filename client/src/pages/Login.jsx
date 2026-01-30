@@ -78,9 +78,11 @@ const Login = () => {
     <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-space-900 dark:to-space-800">
       <div className="max-w-md w-full space-y-8 animate-fade-in">
         <div className="text-center">
-          <h1 className="text-4xl font-bold font-display text-accent-600 dark:text-accent-400">
-            JALIL TECH
-          </h1>
+          <img 
+            src="/images/JALIL-tech-logo.jpg" 
+            alt="JALIL TECH" 
+            className="w-20 h-20 mx-auto rounded-xl shadow-lg"
+          />
           <h2 className="mt-6 text-2xl font-bold text-gray-900 dark:text-white">
             Welcome back!
           </h2>

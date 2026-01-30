@@ -1,9 +1,3 @@
-/**
- * Application Entry Point
- * 
- * Renders the React application with all providers.
- */
-
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';

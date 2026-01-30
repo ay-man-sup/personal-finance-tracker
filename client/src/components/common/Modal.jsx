@@ -1,25 +1,8 @@
-/**
- * Modal Component
- * 
- * Reusable modal dialog component with animations.
- */
-
 import React, { useEffect } from 'react';
 import { FiX } from 'react-icons/fi';
 import PropTypes from 'prop-types';
 
-/**
- * Modal Component
- * 
- * @param {Object} props - Component props
- * @param {boolean} props.isOpen - Whether modal is open
- * @param {Function} props.onClose - Close handler
- * @param {string} props.title - Modal title
- * @param {React.ReactNode} props.children - Modal content
- * @param {string} props.size - Modal size (sm, md, lg, xl)
- */
 const Modal = ({ isOpen, onClose, title, children, size = 'md' }) => {
-  // Handle ESC key press
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === 'Escape') onClose();
@@ -47,14 +30,12 @@ const Modal = ({ isOpen, onClose, title, children, size = 'md' }) => {
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto">
-      {/* Backdrop */}
       <div
         className="fixed inset-0 bg-gray-900/50 dark:bg-space-900/80 backdrop-blur-sm transition-opacity"
         onClick={onClose}
         aria-hidden="true"
       />
 
-      {/* Modal Container */}
       <div className="flex min-h-full items-center justify-center p-4">
         <div
           className={`relative w-full ${sizeClasses[size]} bg-white dark:bg-space-800/95 backdrop-blur-xl border border-gray-200 dark:border-accent-500/30 rounded-xl shadow-2xl dark:shadow-accent-500/10 animate-slide-up`}
@@ -62,7 +43,6 @@ const Modal = ({ isOpen, onClose, title, children, size = 'md' }) => {
           aria-modal="true"
           aria-labelledby="modal-title"
         >
-          {/* Header */}
           <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-accent-500/20">
             <h3
               id="modal-title"

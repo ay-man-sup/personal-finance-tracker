@@ -1,16 +1,5 @@
-/**
- * Transaction Model
- * 
- * Defines the schema for financial transactions (income/expense).
- * Supports categorization, descriptions, and date tracking.
- */
-
 const mongoose = require('mongoose');
 
-/**
- * Predefined categories for transactions
- * Separate lists for income and expense types
- */
 const INCOME_CATEGORIES = [
   'Salary',
   'Freelance',
@@ -40,12 +29,8 @@ const EXPENSE_CATEGORIES = [
   'Other Expenses',
 ];
 
-/**
- * Transaction Schema Definition
- */
 const transactionSchema = new mongoose.Schema(
   {
-    // Reference to the user who owns this transaction
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
@@ -53,7 +38,6 @@ const transactionSchema = new mongoose.Schema(
       index: true,
     },
 
-    // Transaction type: income or expense
     type: {
       type: String,
       required: [true, 'Please specify transaction type'],

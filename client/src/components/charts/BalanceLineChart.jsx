@@ -1,9 +1,3 @@
-/**
- * BalanceLineChart Component
- * 
- * Displays income, expenses, and balance over time.
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -19,9 +13,6 @@ import {
 } from 'recharts';
 import { formatCurrency, getShortMonthName } from '../../utils/helpers';
 
-/**
- * Custom tooltip
- */
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
@@ -44,12 +35,6 @@ const CustomTooltip = ({ active, payload, label }) => {
   return null;
 };
 
-/**
- * BalanceLineChart Component
- * 
- * @param {Object} props - Component props
- * @param {Array} props.data - Monthly summary data
- */
 const BalanceLineChart = ({ data = [] }) => {
   // Format data for chart
   const chartData = data.map((item) => ({

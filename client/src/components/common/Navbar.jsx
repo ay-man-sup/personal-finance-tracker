@@ -40,9 +40,11 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link to="/dashboard" className="flex items-center space-x-2 group">
-              <div className="w-10 h-10 bg-gradient-to-br from-accent-500 to-primary-500 rounded-lg flex items-center justify-center shadow-glow group-hover:shadow-glow-lg transition-all duration-300">
-                <FiDollarSign className="w-6 h-6 text-white" />
-              </div>
+              <img 
+                src="/images/JALIL-tech-logo.jpg" 
+                alt="JALIL TECH" 
+                className="w-10 h-10 rounded-lg shadow-glow group-hover:shadow-glow-lg transition-all duration-300 object-cover"
+              />
               <span className="text-lg font-bold hidden sm:block font-display text-accent-600 dark:text-accent-400">
                 JALIL TECH
               </span>

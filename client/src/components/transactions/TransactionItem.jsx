@@ -1,22 +1,8 @@
-/**
- * TransactionItem Component
- * 
- * Single transaction row in the transaction list.
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FiEdit2, FiTrash2 } from 'react-icons/fi';
 import { formatCurrency, formatDate, truncateText } from '../../utils/helpers';
 
-/**
- * TransactionItem Component
- * 
- * @param {Object} props - Component props
- * @param {Object} props.transaction - Transaction data
- * @param {Function} props.onEdit - Edit handler
- * @param {Function} props.onDelete - Delete handler
- */
 const TransactionItem = ({ transaction, onEdit, onDelete }) => {
   const { _id, type, category, amount, date, description } = transaction;
 
@@ -24,29 +10,24 @@ const TransactionItem = ({ transaction, onEdit, onDelete }) => {
 
   return (
     <tr className="group hover:bg-accent-500/5 transition-colors">
-      {/* Date */}
       <td className="text-sm text-gray-600 dark:text-gray-400">
         {formatDate(date)}
       </td>
 
-      {/* Type Badge */}
       <td>
         <span className={isIncome ? 'badge-income' : 'badge-expense'}>
           {isIncome ? 'Income' : 'Expense'}
         </span>
       </td>
 
-      {/* Category */}
       <td className="text-sm font-medium text-gray-900 dark:text-white">
         {category}
       </td>
 
-      {/* Description (hidden on mobile) */}
       <td className="hidden sm:table-cell text-sm text-gray-600 dark:text-gray-400">
         {truncateText(description, 40) || '-'}
       </td>
 
-      {/* Amount */}
       <td
         className={`text-right text-sm font-semibold font-display ${
           isIncome
@@ -58,7 +39,6 @@ const TransactionItem = ({ transaction, onEdit, onDelete }) => {
         {formatCurrency(amount)}
       </td>
 
-      {/* Actions */}
       <td className="text-right">
         <div className="flex items-center justify-end space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">
           <button
